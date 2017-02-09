@@ -7,5 +7,14 @@ app.config["SECRET_KEY"] = "K33pTh1sS3cr3t"
 
 db = MongoEngine(app)
 
+
+def register_blueprints(app):
+    # Prevents circular imports
+    from frontend.views import issues
+    app.register_blueprint(issues)
+
+
+register_blueprints(app)
+
 if __name__ == '__main__':
     app.run()

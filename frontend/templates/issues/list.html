@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for issue in issues %}
+<h2><a href="{{ url_for('issues.detail', slug=issue.slug) }}">{{ issue.title }}</a></h2>
+<p>{{ issue.comment|truncate(100) }}</p>
+<p>
+    {{ issue.created_at.strftime('%H:%M %d-%m-%Y') }} |
+</p>
+{% endfor %}
+{% endblock %}
